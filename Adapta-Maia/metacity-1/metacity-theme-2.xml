@@ -4,19 +4,14 @@
 	<name>Adapta</name>
 	<author>tista</author>
 	<copyright>GPLv2.0</copyright>
-	<date>2016-2017</date>
+	<date>2016-2018</date>
 	<description>Adapta Metacity theme</description>
 </info>
 
 <!-- meaningfull constants -->
 
 <constant name="C_title_focused" value="#CFD8DC" />
-<constant name="C_title_unfocused" value="#555F64" />
-<!-- color of the button icons -->
-<constant name="C_icons_focused" value="blend/#CFD8DC/#222D32/0.25" />
-<constant name="C_icons_unfocused" value="#555F64" />
-<constant name="C_icons_focused_pressed" value="#CFD8DC" />
-<constant name="C_icons_unfocused_pressed" value="blend/#CFD8DC/#222D32/0.35" />
+<constant name="C_title_unfocused" value="blend/#222D32/#CFD8DC/0.4" />
 <constant name="D_icons_unfocused_offset" value="0" /> <!-- offset of the unfocused icons -->
 
 <!-- geometries -->
@@ -40,11 +35,11 @@
 </frame_geometry>
 
 <frame_geometry name="tiled_left" title_scale="medium" rounded_top_left="false" rounded_top_right="false" parent="max">
-	<distance name="right_width" value="0" />
+	<distance name="right_width" value="1" />
 </frame_geometry>
 
 <frame_geometry name="tiled_right" title_scale="medium" rounded_top_left="false" rounded_top_right="false" parent="max">
-	<distance name="left_width" value="0" />
+	<distance name="left_width" value="1" />
 </frame_geometry>
 
 <frame_geometry name="small" title_scale="small" parent="normal" rounded_top_left="false" rounded_top_right="false">
@@ -159,28 +154,38 @@
 </draw_ops>
 
 <!-- tiled state -->
-<draw_ops name="tiled_entire_background_focused">
+<draw_ops name="tiled_left_entire_background_focused">
 	<rectangle color="#222D32" x="0" y="0" width="width" height="height" filled="true" />
+	<line color="#13191C" x1="width-1" y1="0" x2="width-1" y2="height" />
 </draw_ops>
 
-<draw_ops name="tiled_entire_background_unfocused">
-	<include name="tiled_entire_background_focused" />
+<draw_ops name="tiled_left_entire_background_unfocused">
+	<include name="tiled_left_entire_background_focused" />
 </draw_ops>
 
-<draw_ops name="tiled_titlebar_fill_focused">
-	<include name="tiled_entire_background_focused" />
+<draw_ops name="tiled_left_titlebar_fill_focused">
+	<include name="tiled_left_entire_background_focused" />
 </draw_ops>
 
-<draw_ops name="tiled_titlebar_fill_unfocused">
-	<include name="tiled_entire_background_unfocused" />
+<draw_ops name="tiled_left_titlebar_fill_unfocused">
+	<include name="tiled_left_entire_background_unfocused" />
 </draw_ops>
 
-<draw_ops name="tiled_titlebar_focused">
-	<include name="tiled_titlebar_fill_focused" />
+<draw_ops name="tiled_right_entire_background_focused">
+	<rectangle color="#222D32" x="0" y="0" width="width" height="height" filled="true" />
+	<line color="#13191C" x1="0" y1="0" x2="0" y2="height" />
 </draw_ops>
 
-<draw_ops name="tiled_titlebar_unfocused">
-	<include name="tiled_titlebar_fill_unfocused" />
+<draw_ops name="tiled_right_entire_background_unfocused">
+	<include name="tiled_right_entire_background_focused" />
+</draw_ops>
+
+<draw_ops name="tiled_right_titlebar_fill_focused">
+	<include name="tiled_right_entire_background_focused" />
+</draw_ops>
+
+<draw_ops name="tiled_right_titlebar_fill_unfocused">
+	<include name="tiled_right_entire_background_unfocused" />
 </draw_ops>
 
 	<!-- button icons-->
@@ -191,7 +196,7 @@
 </draw_ops>
 
 <draw_ops name="close_unfocused">
-	<image filename="button_close.svg" x="(width-object_width/3)/2" y="(height-object_height/3)/2" width="object_width/3" height="object_height/3" alpha="0.5" />
+	<image filename="button_close.svg" x="(width-object_width/3)/2" y="(height-object_height/3)/2" width="object_width/3" height="object_height/3" alpha="0.4" />
 </draw_ops>
 
 <draw_ops name="close_focused_pressed">
@@ -199,7 +204,7 @@
 </draw_ops>
 
 <draw_ops name="close_unfocused_pressed">
-	<image filename="button_close_pressed.svg" x="(width-object_width/3)/2" y="(height-object_height/3)/2" width="object_width/3" height="object_height/3" alpha="0.5"/>
+	<image filename="button_close_pressed.svg" x="(width-object_width/3)/2" y="(height-object_height/3)/2" width="object_width/3" height="object_height/3" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="close_focused_prelight">
@@ -207,7 +212,7 @@
 </draw_ops>
 
 <draw_ops name="close_unfocused_prelight">
-	<image filename="button_close_prelight.svg" x="(width-object_width/3)/2" y="(height-object_height/3)/2" width="object_width/3" height="object_height/3" alpha="0.5"/>
+	<image filename="button_close_prelight.svg" x="(width-object_width/3)/2" y="(height-object_height/3)/2" width="object_width/3" height="object_height/3" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="maximize_focused">
@@ -219,11 +224,11 @@
 </draw_ops>
 
 <draw_ops name="maximize_unfocused">
-	<image filename="button_maximize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_maximize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="max_maximize_unfocused">
-	<image filename="max_button_unmaximize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="max_button_unmaximize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="maximize_focused_prelight">
@@ -235,11 +240,11 @@
 </draw_ops>
 
 <draw_ops name="maximize_unfocused_prelight">
-	<image filename="button_maximize_prelight.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_maximize_prelight.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="max_maximize_unfocused_prelight">
-	<image filename="max_button_unmaximize_prelight.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="max_button_unmaximize_prelight.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="maximize_focused_pressed">
@@ -251,11 +256,11 @@
 </draw_ops>
 
 <draw_ops name="maximize_unfocused_pressed">
-	<image filename="button_maximize_pressed.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_maximize_pressed.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="max_maximize_unfocused_pressed">
-	<image filename="max_button_unmaximize_pressed.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="max_button_unmaximize_pressed.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="minimize_focused">
@@ -263,7 +268,7 @@
 </draw_ops>
 
 <draw_ops name="minimize_unfocused">
-	<image filename="button_minimize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_minimize.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="minimize_focused_prelight">
@@ -271,7 +276,7 @@
 </draw_ops>
 
 <draw_ops name="minimize_unfocused_prelight">
-	<image filename="button_minimize_prelight.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_minimize_prelight.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="minimize_focused_pressed">
@@ -279,7 +284,7 @@
 </draw_ops>
 
 <draw_ops name="minimize_unfocused_pressed">
-	<image filename="button_minimize_pressed.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_minimize_pressed.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="menu_focused">
@@ -287,7 +292,7 @@
 </draw_ops>
 
 <draw_ops name="menu_unfocused">
-	<image filename="button_menu.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_menu.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="menu_focused_prelight">
@@ -295,7 +300,7 @@
 </draw_ops>
 
 <draw_ops name="menu_unfocused_prelight">
-	<image filename="button_menu_prelight.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_menu_prelight.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="menu_focused_pressed">
@@ -303,7 +308,7 @@
 </draw_ops>
 
 <draw_ops name="menu_unfocused_pressed">
-	<image filename="button_menu_pressed.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_menu_pressed.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <!-- icon size used in GTK -->
@@ -350,7 +355,7 @@
 </draw_ops>
 
 <draw_ops name="shade_unfocused">
-	<image filename="button_shade.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_shade.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="shade_focused_prelight">
@@ -358,7 +363,7 @@
 </draw_ops>
 
 <draw_ops name="shade_unfocused_prelight">
-	<image filename="button_shade_prelight.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_shade_prelight.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="shade_focused_pressed">
@@ -366,7 +371,7 @@
 </draw_ops>
 
 <draw_ops name="shade_unfocused_pressed">
-	<image filename="button_shade_pressed.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_shade_pressed.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="unshade_focused">
@@ -374,7 +379,7 @@
 </draw_ops>
 
 <draw_ops name="unshade_unfocused">
-	<image filename="button_unshade.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_unshade.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="unshade_focused_prelight">
@@ -382,7 +387,7 @@
 </draw_ops>
 
 <draw_ops name="unshade_unfocused_prelight">
-	<image filename="button_unshade_prelight.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_unshade_prelight.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 <draw_ops name="unshade_focused_pressed">
@@ -390,7 +395,7 @@
 </draw_ops>
 
 <draw_ops name="unshade_unfocused_pressed">
-	<image filename="button_unshade_pressed.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.5"/>
+	<image filename="button_unshade_pressed.svg" x="(width-object_width)/2" y="(height-object_height)/2" width="object_width" height="object_height" alpha="0.4"/>
 </draw_ops>
 
 	<!-- button backgrounds -->
@@ -994,8 +999,8 @@
 </frame_style>
 
 <frame_style name="tiled_left_focused" geometry="tiled_left">
-	<piece position="entire_background" draw_ops="tiled_entire_background_focused" />
-	<piece position="titlebar" draw_ops="tiled_titlebar_fill_focused" />
+	<piece position="entire_background" draw_ops="tiled_left_entire_background_focused" />
+	<piece position="titlebar" draw_ops="tiled_left_titlebar_fill_focused" />
 	<piece position="title" draw_ops="title_focused" />
 	<button function="close" state="normal" draw_ops="close_focused" />
 	<button function="close" state="prelight" draw_ops="close_focused_prelight" />
@@ -1032,8 +1037,8 @@
 </frame_style>
 
 <frame_style name="tiled_left_unfocused" geometry="tiled_left">
-	<piece position="entire_background" draw_ops="tiled_entire_background_unfocused" />
-	<piece position="titlebar" draw_ops="tiled_titlebar_fill_unfocused" />
+	<piece position="entire_background" draw_ops="tiled_left_entire_background_unfocused" />
+	<piece position="titlebar" draw_ops="tiled_left_titlebar_fill_unfocused" />
 	<piece position="title" draw_ops="title_unfocused" />
 	<button function="close" state="normal" draw_ops="close_unfocused"/>
 	<button function="close" state="prelight" draw_ops="close_unfocused_prelight"/>
@@ -1070,8 +1075,8 @@
 </frame_style>
 
 <frame_style name="tiled_right_focused" geometry="tiled_right">
-	<piece position="entire_background" draw_ops="tiled_entire_background_focused" />
-	<piece position="titlebar" draw_ops="tiled_titlebar_fill_focused" />
+	<piece position="entire_background" draw_ops="tiled_right_entire_background_focused" />
+	<piece position="titlebar" draw_ops="tiled_right_titlebar_fill_focused" />
 	<piece position="title" draw_ops="title_focused" />
 	<button function="close" state="normal" draw_ops="close_focused" />
 	<button function="close" state="prelight" draw_ops="close_focused_prelight" />
@@ -1108,8 +1113,8 @@
 </frame_style>
 
 <frame_style name="tiled_right_unfocused" geometry="tiled_right">
-	<piece position="entire_background" draw_ops="tiled_entire_background_unfocused" />
-	<piece position="titlebar" draw_ops="tiled_titlebar_fill_unfocused" />
+	<piece position="entire_background" draw_ops="tiled_right_entire_background_unfocused" />
+	<piece position="titlebar" draw_ops="tiled_right_titlebar_fill_unfocused" />
 	<piece position="title" draw_ops="title_unfocused" />
 	<button function="close" state="normal" draw_ops="close_unfocused"/>
 	<button function="close" state="prelight" draw_ops="close_unfocused_prelight"/>

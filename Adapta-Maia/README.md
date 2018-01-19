@@ -10,28 +10,27 @@ Before using Adapta
 
 Adapta strongly depends on Material Design resources, especially its **fonts**.
 
- 1. [**Noto Sans**](https://fonts.google.com/specimen/Noto+Sans)
+ 1. [**Roboto**](https://fonts.google.com/specimen/Roboto)
+   - Very famous as the default truetype font in Android (English ver.).
+   - Multilingual support is not good.
+   - Weight used in Adapta: 300, 400, 500, 700
+
+ 2. [**Noto Sans**](https://fonts.google.com/specimen/Noto+Sans)
    - Noto (NO TOfu) sans-serif truetype/opentype font covers a lot of languages.
    - Developed by Monotype and Adobe.
    - Weight used in Adapta: 400, (500), 700
 
- 2. [**Roboto**](https://fonts.google.com/specimen/Roboto)
-   - Very famous as the default truetype font in Android (English ver.).
-   - Multilingual support is not good.
-   - Weight used in Adapta: 300, 400, 500, 700
+| |Primary|Fallback|
+|:-----:|:-----:|:-----:|
+|Gnome-Shell >= 3.26|**Roboto**|Sans-serif|
+|Gnome-Shell =< 3.24|**NotoSans**|Sans-serif|
+|Cinnamon           |**NotoSans**|Sans-serif|
 
 > **Note:**
 >
 > * Roboto is very nice with Adapta, but in some locales, it causes Tofu.
 > * NotoSans may work well in vairous locales, but NotoSans lacks 500 (Medium) weight. So elements defined with 500 will be drawn with 400 automatically.
 > * NotoSans CJK supports 500 weight.
-
-Adapta uses **NotoSans** as the primary font-family in Gnome-Shell and Cinnamon (Cantarell is for fallback).
-In some distributions, users may need to install `fonts-noto-hinted`.
-
-> **Note:**
->
-> In Gnome-Shell 3.26 theming, we've switched to Roboto already.
 
 Adapta is designed with nominal **13px (or 14px)** Roboto font.
 In Gnome, "window-scaling-factor = 1.0" means `-gtk-dpi = 96`, it also means:
@@ -91,7 +90,7 @@ Supported Desktop Environments
  ```
  * GNOME-Shell     >= 3.18.3
  * GNOME-Flashback >= 3.18.2
- * Budgie-Desktop  >= 10.2.7
+ * Budgie-Desktop  >= 10.4
  * Cinnamon        >= 2.8.6
  * Unity7          >= 7.4.0 (Gtk+ 3.x only)
  * XFce4           >= 4.12.2
@@ -101,7 +100,7 @@ Supported Desktop Environments
 
  > **Note:**
  >
- >   * Mate-Desktop support is a W.I.P.
+ >   * Unity7 support will be dropped in January 2018.
 
 Unsupported Gtk+ Based Desktop(s)
 -------------------------------
@@ -113,7 +112,7 @@ Unsupported Gtk+ Based Desktop(s)
 
 Installation from Package(s)
 ----------------------------
- * Archlinux (community): https://www.archlinux.org/packages/community/any/adapta-gtk-theme/
+ * Arch Linux (community): https://www.archlinux.org/packages/community/any/adapta-gtk-theme/
 
  * Copr: https://copr.fedorainfracloud.org/coprs/heikoada/gtk-themes/
 
@@ -121,9 +120,7 @@ Installation from Package(s)
 
  * PPA: https://launchpad.net/~tista/+archive/ubuntu/adapta
 
- > **Note:**
- >
- >   * Solus OS has an eopkg (ypkg) in main repository.
+ * Solus OS:  package can be found in official repositories
 
 Installation from Git Source
 ----------------------------
@@ -150,7 +147,6 @@ Installation from Git Source
  * pkg-config (pkgconfig)
  * sassc                                     >= 3.3
 
- * gnome-shell                               >= 3.18.3 (if --enable-gnome)
  * parallel                                  (if --enable-parallel)
  ```
 
@@ -165,6 +161,7 @@ Installation from Git Source
  >   * Adapta employs **SassC** wrapper of `libsass` to generate CSS stylesheets.
  >   * Adapta uses `inkscape` to generate installable PNG files.
  >   * Adapta uses `glib-compile-resources` to compile the gresource files for Gtk+ and Gnome-Shell.
+ >   * `glib-2.0 >= 2.53`, Gnome-Shell 3.26 theming is used if `--enable-gnome`.
 
 3. Build and install system-wide:
 
@@ -223,13 +220,12 @@ Installation from Git Source
 
  > **Note:**
  >
- >   * Development for Gtk+ 3.18.x theming is over.
+ >   * Development for Gtk+ 3.18.x theming is over. And Gtk+ 3.18 support will be dropped in April 2018.
 
-7. To change the default 5 **Key-Colors**, pass these options:
+7. To change the default 4 **Key-Colors**, pass these options:
 
  ```
- --with-selection_color        Primary color for 'selected-items' (Default: #00BCD4 = Cyan500, type: string)
- --with-second_selection_color Primary color for 'select' effects (Default: #4DD0E1 = Cyan300, type: string)
+ --with-selection_color        Primary color for 'selected-items' (Default: #16a085 = Cyan500, type: string)
  --with-accent_color           Secondary color for notifications and OSDs (Default: #4DB6AC = Teal300, type: string)
  --with-suggestion_color       Secondary color for 'suggested' buttons (Default: #009688 = Teal500, type: string)
  --with-destruction_color      Tertiary color for 'destructive' buttons (Default: #FF5252 = RedA200, type: string)
@@ -239,27 +235,33 @@ Installation from Git Source
  >
  >   * Color-codes are defined as `#` + 6-digit `HEX`s (Standard RGB definitions in HTML codes).
  >     Uppercases are strongly recommended in Adapta code-base.
- >   * The Material Design Color Palette can be found [here](https://www.google.com/design/spec/style/color.html#color-color-palette).
+ >   * The Material Design Color Palette can be found [**here**](https://www.google.com/design/spec/style/color.html#color-color-palette).
  >   * Example: If you would like to use 'Teal500' as selection_color, use this:
  >
- >     ```./autogen.sh --with-selection_color=#009688 --with-second_selection_color=#4DB6AC```
+ >     ```./autogen.sh --with-selection_color=#009688```
  >
  >     This switchese the theme to almost Teal key colors.
  >   * Basically `selection_color` and `suggestion_color` should use `500` colors,
- >     and `second_selection_color` and `accent_color` should use `300` colors.
- >   * While doing `make`, Adapta changes those 5 colors in all stylesheets and images,
+ >     and `accent_color` should use `300` colors.
+ >   * While doing `make`, Adapta changes those 4 colors in all stylesheets and images,
  >     and `make clean` cleans up all generated files from source directories.
  >   * This feature unfortunately is not supported in `Openbox-3` and `Telegram 1.0` theming.
 
 GtkSourceView/Gedit Color Scheme Support
----------------------------------------
+----------------------------------------
  A theme file `adapta.xml` is installed by default into `Adapta(-Nokto)/gedit` directory.
- See details in [`README.md`](/extra/gedit/README.md).
+ See details in [**README.md**](/extra/gedit/README.md).
 
  > **Note:**
  >
  >   * The color-scheme can be used in Gnome-Builder, Gnome-Sushi, Meld and Gedit if installed to `~/.local/share/gtksourceview-3.0/styles` directory.
  >   * Currently only dark-variant is supported.
+
+Visual Studio Code (VS Code) Theme Support
+------------------------------------------
+ 1. Linux-themes (Author: SolarLiner): [**Visual Studio Marketplace**](https://marketplace.visualstudio.com/items?itemName=SolarLiner.linux-themes)
+
+ 2. Vscode-theme-adapted (Author: About-Code): [**Github**](https://github.com/about-code/vscode-theme-adapted)
 
 Extra Browser Support
 ---------------------
@@ -280,7 +282,7 @@ Extra Browser Support
  >     ```
  >     Background: #FAFBFC (#263238)
  >     Foreground: #263238 (#CFD8DC)
- >     Highlight:  #00BCD4
+ >     Highlight:  #16a085
  >     Accent:     #222D32
  >     Accent Color from Active Page: [ ]
  >     Apply Accent Color to Window:  [*]
@@ -334,7 +336,9 @@ Work in Progress
 TODO
 ----
 * Prepare for Meson build system (priority: high)
-* Prepare for FlatPak packaging (priority: mid)
+* Prepare for x3 scaling (priority: mid or low)
+* Drop Unity7 support in January 2018 (Xenial -> Bionic).
+* Drop Gtk+ 3.18 support in April 2018 (Xenial -> Bionic).
 
 Public License
 --------------
@@ -342,8 +346,14 @@ Public License
 
  > **Note:**
  >
- > SVG files are licensed under CC BY-SA 4.0
+ > SVG files are licensed under CC BY-SA 4.0.
+ > And an icon-theme in Cinnamon thumbnails:
+ > [**Paper Icons**](http://snwh.org/paper/icons) by Sam Hewitt is licensed under CC-SA-4.0.
+
+Donations
+---------
+ [**My Patreon Page**](https://www.patreon.com/tista500)
 
 Special Thanks to
 --------------
- Nana-4, the developer of Flat-Plat.
+ Nana-4, the developer of Materia (formerly Flat-Plat).

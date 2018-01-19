@@ -1,4 +1,4 @@
-/* This file is part of adapta-gtk-theme Copyright (C) 2016-2017 Tista <tista.gma500@gmail.com> This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. */
+/* This file is part of adapta-gtk-theme Copyright (C) 2016-2018 Tista <tista.gma500@gmail.com> This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. */
 @keyframes ripple_effect { 0% { background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 0%, transparent 0%), image(alpha(currentColor, 0)); }
   66% { background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 100%, transparent 0%), image(alpha(currentColor, 0.12)); }
   100% { background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 100%, transparent 0%), image(alpha(currentColor, 0)); } }
@@ -6,10 +6,6 @@
 @keyframes flat_ripple_effect { 0% { background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 0%, transparent 0%), image(alpha(currentColor, 0.12)); }
   66% { background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0.12) 100%, transparent 0%), image(alpha(currentColor, 0.12)); }
   100% { background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0.12)); } }
-
-@keyframes list_ripple_effect { 0% { background-image: radial-gradient(circle farthest-side at center, alpha(currentColor, 0.05) 0%, transparent 0%), image(alpha(currentColor, 0.05)); }
-  66% { background-image: radial-gradient(circle farthest-side at center, alpha(currentColor, 0.05) 100%, transparent 0%), image(alpha(currentColor, 0.05)); }
-  100% { background-image: radial-gradient(circle farthest-side at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0.05)); } }
 
 #XfceNotifyWindow buttonbox button { background-image: radial-gradient(circle farthest-corner at center, alpha(currentColor, 0) 100%, transparent 0%), image(alpha(currentColor, 0)); box-shadow: none; transition-timing-function: cubic-bezier(0, 0, 0.2, 1); transition-duration: 0.2s; }
 
@@ -35,9 +31,9 @@
     -gtk-icon-transform: scale(0, 1); }
   74.9% { -gtk-icon-source: linear-gradient(to bottom, transparent 50%, #4CAF50 50%, #4CAF50 calc(50% + 2px), transparent calc(50% + 2px), transparent 100%);
     -gtk-icon-transform: scale(1, 1); }
-  75% { -gtk-icon-source: linear-gradient(to bottom, transparent 50%, #2196F3 50%, #2196F3 calc(50% + 2px), transparent calc(50% + 2px), transparent 100%);
+  75% { -gtk-icon-source: linear-gradient(to bottom, transparent 50%, #38a8a3 50%, #38a8a3 calc(50% + 2px), transparent calc(50% + 2px), transparent 100%);
     -gtk-icon-transform: scale(1, 1); }
-  99.9% { -gtk-icon-source: linear-gradient(to bottom, transparent 50%, #2196F3 50%, #2196F3 calc(50% + 2px), transparent calc(50% + 2px), transparent 100%);
+  99.9% { -gtk-icon-source: linear-gradient(to bottom, transparent 50%, #38a8a3 50%, #38a8a3 calc(50% + 2px), transparent calc(50% + 2px), transparent 100%);
     -gtk-icon-transform: scale(0, 1); }
   100% { -gtk-icon-source: linear-gradient(to bottom, transparent 50%, #F44336 50%, #F44336 calc(50% + 2px), transparent calc(50% + 2px), transparent 100%);
     -gtk-icon-transform: scale(0, 1); } }
